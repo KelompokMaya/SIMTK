@@ -12,7 +12,7 @@
             </div>
             <div class="info">
                 <p style="color: #fff;"><?php echo $currUser; ?></p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <a href="#">Kepala Sekolah</a>
             </div>
             
         </div>
@@ -23,15 +23,13 @@
 
             <li id="sidebar-dashboard" class="active"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
 
-            <li id="sidebar-pencarian"><a href="#"><i class="fa  fa-search" ></i> Pencarian Dokumen</a></li>
-
-            <li id="sidebar-aset"><a href="#"><i class="fa  fa-th-list"></i> Aset</a></li>
+            <li id="sidebar-siswa"><a href="#"><i class="fa  fa-th-list"></i> Kelola Siswa</a></li>
 
             <li id="sidebar-lokasi"><a href="#"><i class="fa fa-map"></i> Lokasi Aset</a></li>
 
-            <li id="sidebar-user"><a href="#"><i class="fa fa-user"></i> User</a></li>
-
-            <li id="sidebar-history"><a href="#"><i class="fa fa-history "></i> History Aset</a></li>
+            <!-- <li id="sidebar-user"><a href="#"><i class="fa fa-user"></i> User</a></li>
+ -->
+            <li id="sidebar-history"><a href="#"><i class="fa fa-history "></i> Riwayat Transaksi</a></li>
 
             
 

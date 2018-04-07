@@ -8,7 +8,7 @@ class M_admin extends CI_Model {
 		$this->db->select('id,fullname,username');
 		$this->db->where('username',$user);
 		$this->db->where('password',$pass);
-		return $this->db->get('tb_user');
+		return $this->db->get('tb_admin');
 	} 
 	public function select_all(){
 		$this->db->select('*');

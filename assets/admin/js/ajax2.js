@@ -36,13 +36,13 @@
 
 // LOAD TABLE MENU
 
-$('#sidebar-aset').click(function(event) {
+$('#sidebar-siswa').click(function(event) {
 	$('#main-content').html();
 	$('#preloader').css('display','block');
-	$.get(base_url+"Admin/Aset", function(data) {
+	$.get(base_url+"Admin/Siswa", function(data) {
 		$('#preloader').css('display','none');
 		$('#main-content').html(data);
-    setCookie("sidebar", "aset", 0.5);
+    setCookie("sidebar", "siswa", 0.5);
 		dataTable();
 	});
 });

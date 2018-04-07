@@ -5,7 +5,7 @@
       <div class="info-box-content">
         <span class="info-box-text">Total</span>
         <span class="info-box-text">User</span>
-        <span class="info-box-number"></small><?php echo $jml_user;?></span>
+        <span class="info-box-number"></small>1</span>
       </div>
 
     </div>
@@ -18,7 +18,7 @@
       <div class="info-box-content">
         <span class="info-box-text">Total</span>
         <span class="info-box-text">Aset</span>
-        <span class="info-box-number"><?php echo $jml_aset;?></span>
+        <span class="info-box-number">2</span>
       </div>
 
     </div>

@@ -7,7 +7,7 @@
             <div class="bg-user-panel-header">
                 <img src="<?php echo base_url('assets/images/bg-blur.jpg') ?>" alt="User Image" />
             </div>
-            <a href="#" class="logo"><b> SIM</b>Barang</a>
+            <a href="#" class="logo"><b> SIM</b>TK</a>
             <!-- Header Navbar: style can be found in header.less -->
             <nav class="navbar navbar-static-top" role="navigation">
                 <!-- Sidebar toggle button-->

@@ -26,8 +26,9 @@
                 <thead>
                     <tr style="background:  #551E1E; color: white">
                         <th>No</th>
-                        <th>Nama Aset</th>
-                        <th>Lokasi Sekarang</th>
+                        <th>No Induk</th>
+                        <th>Nama Siswa</th>
+                        <th>Tanggal Bayar</th>
                         <th style="text-align: center;">Aksi</th>
                                               
                     </tr>
@@ -38,7 +39,8 @@
                     <tr>
                         <td><?php echo $i; $i++; ?></td>
                         <td><?php echo $row->nama_aset; ?></td>
-                        <td><?php echo $row->sekarang_kampus; ?> / <?php echo $row->sekarang_fakultas; ?> / <?php echo $row->sekarang_jurusan; ?> / <?php echo $row->sekarang_lokasi; ?></td>
+                        <td><?php echo $row->nama_aset; ?></td>
+                        <td><?php echo $row->nama_aset; ?></td>
                         <td>
                           <div class="btn-group">
                             <button onclick="Detail(<?php echo $row->aset_id; ?>);" class="btn btn-primary btn-flat" type="button" data-toggle="tooltip" >
@@ -47,7 +49,7 @@
                           </div>
                           <div class="btn-group">
                              <button onclick="DetailPerpindahan(<?php echo $row->aset_id; ?>);" class="btn btn-warning btn-flat" type="button" data-toggle="tooltip" >
-                                <i> Detail Perpindahan</i>
+                                <i> Detail Pembayaran</i>
                             </button>
                           </div>
                         </td>
@@ -60,10 +62,11 @@
                 </tbody>
                 <tfoot>
                      <tr>
-                        <th>No</th>
-                        <th>Nama Aset</th>
-                        <th>Lokasi Sekarang</th>
-                        <th>Aksi</th>
+                         <th>No</th>
+                        <th>No Induk</th>
+                        <th>Nama Siswa</th>
+                        <th>Tanggal Bayar</th>
+                        <th style="text-align: center;">Aksi</th>
                         
                     </tr>
                 </tfoot>
