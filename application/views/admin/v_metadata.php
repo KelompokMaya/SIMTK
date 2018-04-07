@@ -26,7 +26,7 @@
         <!-- jQuery 2.1.3 -->
         <script src="<?php echo base_url('assets/AdminLTE-2.3.11/plugins/jQuery/jquery-2.2.3.min.js'); ?>"></script>
         <script type="text/javascript">
-            base_url="http://localhost/SIM/";
+            base_url="http://localhost/SIMTK/";
         </script>
         
 
