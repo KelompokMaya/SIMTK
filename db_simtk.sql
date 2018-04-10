@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 07, 2018 at 04:55 PM
+-- Generation Time: Apr 10, 2018 at 09:18 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -676,11 +676,30 @@ INSERT INTO `tb_lokasi` (`id_lokasi`, `kampus_id`, `fakultas_id`, `jurusan_id`, 
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_riwayat_transaksi`
+--
+
+CREATE TABLE `tb_riwayat_transaksi` (
+  `id` int(11) NOT NULL,
+  `siswa_id` int(11) NOT NULL,
+  `tgl_bayar` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_riwayat_transaksi`
+--
+
+INSERT INTO `tb_riwayat_transaksi` (`id`, `siswa_id`, `tgl_bayar`) VALUES
+(1, 1, '2018-04-10');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_siswa`
 --
 
 CREATE TABLE `tb_siswa` (
-  `id` int(11) NOT NULL,
+  `id_siswa` int(11) NOT NULL,
   `no_induk` varchar(20) NOT NULL,
   `nama_lengkap` varchar(100) NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
@@ -701,7 +720,7 @@ CREATE TABLE `tb_siswa` (
 -- Dumping data for table `tb_siswa`
 --
 
-INSERT INTO `tb_siswa` (`id`, `no_induk`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `status`, `tahun_diterima`, `nama_ayah`, `no_hp_ayah`, `alamat_ayah`, `nama_ibu`, `no_hp_ibu`, `alamat_ibu`) VALUES
+INSERT INTO `tb_siswa` (`id_siswa`, `no_induk`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `status`, `tahun_diterima`, `nama_ayah`, `no_hp_ayah`, `alamat_ayah`, `nama_ibu`, `no_hp_ibu`, `alamat_ibu`) VALUES
 (1, '1408605007', 'kadek aryana dwi putra', '2014', '1996-04-30', 'Laki-Laki', 'jl.Raya AAN, Klungkung BAli', 'Aktif', '2014', 'kim', '08123456', 'aan', 'sung', '21213121', 'aan'),
 (2, '1408605014', 'widarma putra', '2014', '1996-04-30', 'Laki-Laki', 'jl.Raya AAN, Klungkung BAli', 'Aktif', '2015', 'kim', '08123456', 'aan', 'sung', '21213121', 'aan');
 
@@ -752,10 +771,16 @@ ALTER TABLE `tb_lokasi`
   ADD PRIMARY KEY (`id_lokasi`);
 
 --
+-- Indexes for table `tb_riwayat_transaksi`
+--
+ALTER TABLE `tb_riwayat_transaksi`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id_siswa`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -797,10 +822,15 @@ ALTER TABLE `tb_kampus`
 ALTER TABLE `tb_lokasi`
   MODIFY `id_lokasi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
+-- AUTO_INCREMENT for table `tb_riwayat_transaksi`
+--
+ALTER TABLE `tb_riwayat_transaksi`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
 -- AUTO_INCREMENT for table `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
