@@ -25,11 +25,11 @@
             <table id="" class="table table1 table-bordered table-striped">
                 <thead>
                     <tr style="background:  #551E1E; color: white">
-                        <th>No</th>
+                        <th style="text-align: center; width: 20px">No</th>
                         <th>No Induk</th>
                         <th>Nama Siswa</th>
                         <th>Tanggal Bayar</th>
-                        <th style="text-align: center;">Aksi</th>
+                        <th style="text-align: center; width: 180px">Aksi</th>
                                               
                     </tr>
                 </thead>
@@ -38,17 +38,17 @@
                  <?php foreach ($history->result() as $row): ?>
                     <tr>
                         <td><?php echo $i; $i++; ?></td>
-                        <td><?php echo $row->nama_aset; ?></td>
-                        <td><?php echo $row->nama_aset; ?></td>
-                        <td><?php echo $row->nama_aset; ?></td>
+                        <td><?php echo $row->no_induk; ?></td>
+                        <td><?php echo $row->nama_lengkap; ?></td>
+                        <td><?php echo $row->tgl_bayar; ?></td>
                         <td>
                           <div class="btn-group">
-                            <button onclick="Detail(<?php echo $row->aset_id; ?>);" class="btn btn-primary btn-flat" type="button" data-toggle="tooltip" >
+                            <button onclick="Detail(<?php echo $row->siswa_id; ?>);" class="btn btn-primary btn-flat" type="button" data-toggle="tooltip" >
                                 <i> Detail </i>
                             </button>
                           </div>
                           <div class="btn-group">
-                             <button onclick="DetailPerpindahan(<?php echo $row->aset_id; ?>);" class="btn btn-warning btn-flat" type="button" data-toggle="tooltip" >
+                             <button onclick="DetailPerpindahan(<?php echo $row->siswa_id; ?>);" class="btn btn-warning btn-flat" type="button" data-toggle="tooltip" >
                                 <i> Detail Pembayaran</i>
                             </button>
                           </div>
@@ -84,54 +84,76 @@
         <div class="modal-content">
           <div class="modal-header">
             
-            <h4 class="modal-title" id="myModalLabel">Detail Aset</h4>
+            <h4 class="modal-title" id="myModalLabel">Detail Siswa</h4>
           </div>
           <div class="modal-body">
             <form role="form" method="post" action="" id="form-detail">
 
-                <div class="form-group">
-                  <label>Nama</label>
-                  <input name="username" id="nama"  class="form-control" disabled >
-                </div>
+                <div class="col-xs-6">
 
-                <div class="form-group">
-                  <label>Manufaktur</label>
-                  <input  id="manufaktur"  class="form-control" disabled >
+                        <div class="form-group">
+                          <label>Nama</label>
+                          <input name="nama" id="nama" type="text" class="form-control"  disabled>
+                        </div>
+                        <div class="form-group">
+                          <label>No Induk Siswa</label>
+                          <input name="nis" id="nis" type="text" class="form-control"  disabled>
+                        </div>
+                        <div class="form-group">
+                          <label>Tempat Lahir</label>
+                          <input name="tempat_lahir" id="tempat_lahir" type="text" class="form-control"  disabled>
+                        </div>
+                         <div class="form-group">
+                          <label>Tanggal Lahir</label>
+                          <input name="tanggal_lahir" id="tanggal_lahir" type="date" class="form-control"  disabled>
+                        </div>
+                        <div class="form-group">
+                          <label>Jenis Kelamin</label>
+                          <input name="jenis_kelamin" id="jenis_kelamin" type="text" class="form-control"  disabled>
+                        </div>
+                        
+                        <div class="form-group">
+                          <label>Alamat</label>
+                          <textarea id="alamat" name="alamat" data-link="" class="form-control " disabled></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label>Status</label>
+                          <input name="status" id="status" type="text" class="form-control"  disabled>
+                        </div>
+                        
+                        
                 </div>
-
-                 <div class="form-group">
-                  <label>Status</label>
-                  <input  id="status"  class="form-control" disabled >
-                </div>
-
-                <div class="form-group">
-                  <label>No Seri</label>
-                  <input  id="noseri"  class="form-control" disabled >
-                </div>
-                
-                <div class="form-group">
-                  <label>Tipe</label>
-                  <input  id="tipe"  class="form-control" disabled >
-                </div>
-
-                <div class="form-group">
-                  <label>Model</label>
-                  <input  id="model"  class="form-control" disabled >
-                </div>
-
-                <div class="form-group">
-                  <label>No Inventory</label>
-                  <input  id="noinventory"  class="form-control" disabled >
-                </div>
-
-                 <div class="form-group">
-                  <label>Tanggal Pemasangan</label>
-                  <input  id="tgldipasang"  class="form-control" disabled >
-                </div>
-
-                <div class="form-group">
-                  <label>Trakhir Diperbaiki</label>
-                  <input  id="trakhirdiperbaiki"  class="form-control" disabled >
+                <div class="col-xs-6">
+                        <div class="form-group">
+                          <label>Tahun Diterima</label>
+                          <input name="tahun_diterima" id="tahun_diterima" type="text" class="form-control"  disabled>
+                        </div>
+                        <div class="form-group">
+                          <label>Nama Ayah</label>
+                          <input name="nama_ayah" id="nama_ayah" type="text" class="form-control" disabled>
+                        </div>
+                        <div class="form-group">
+                          <label>No HP Ayah</label>
+                          <input name="no_ayah" id="no_ayah" type="text" class="form-control"  disabled>
+                        </div>
+                         <div class="form-group">
+                          <label>Alamat Ayah</label>
+                          <textarea id="alamat_ayah" name="alamat_ayah" data-link="" class="form-control " disabled></textarea>
+                        </div>
+                        <div class="form-group">
+                          <label>Nama Ibu</label>
+                          <input name="nama_ibu" id="nama_ibu" type="text" class="form-control"  disabled>
+                        </div>
+                        <div class="form-group">
+                          <label>No HP Ibu</label>
+                          <input name="no_ibu" id="no_ibu" type="text" class="form-control"  disabled>
+                        </div>
+                         <div class="form-group">
+                          <label>Alamat Ibu</label>
+                          <textarea id="alamat_ibu" name="alamat_ibu" data-link="" class="form-control " disabled></textarea>
+                        </div>
+                        
+                        
                 </div>
           
           <div class="modal-footer">
@@ -151,18 +173,18 @@
 </div>
 
 <!-- modal detail perpindahan!-->
-<div class="modal fade" id="modalDetail-perpindahan" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+<div class="modal fade" id="modalDetail-pembayaran" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
   <div class="example-modal">
     <div class="modal">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
             
-            <h4 class="modal-title" id="myModalLabel">Detail Perpindahan</h4>
+            <h4 class="modal-title" id="myModalLabel">Detail Pembayaran</h4>
           </div>
           <div class="modal-body">
            
-              <div id="form-detail-perpindahan" class="form-group">
+              <div id="form-detail-pembayaran" class="form-group">
               </div>
                 
               <div class="modal-footer">
@@ -188,28 +210,33 @@
    
     function Detail(id){
      
-      $.get(base_url+"Admin/Aset/select/"+id, function(aset) {
+      $.get(base_url+"Admin/Siswa/select/"+id, function(aset) {
             var aset=jQuery.parseJSON(aset+"");
              $('#modalDetail-aset').modal();
-            $('#nama').val(aset.nama);
-            $('#manufaktur').val(aset.manufaktur);
+            $('#nama').val(aset.nama_lengkap);
+            $('#nis').val(aset.no_induk);
+            $('#tempat_lahir').val(aset.tempat_lahir);
+            $('#tanggal_lahir').val(aset.tanggal_lahir);
+            $('#jenis_kelamin').val(aset.jenis_kelamin);
+            $('#alamat').val(aset.alamat);
             $('#status').val(aset.status);
-            $('#noseri').val(aset.noseri);
-            $('#tipe').val(aset.tipe);
-            $('#model').val(aset.model);
-            $('#noinventory').val(aset.noinventory);
-            $('#tgldipasang').val(aset.tgldipasang);
-            $('#trakhirdiperbaiki').val(aset.trakhir_diperbaiki);
+            $('#tahun_diterima').val(aset.tahun_diterima);
+            $('#nama_ayah').val(aset.nama_ayah);
+            $('#no_ayah').val(aset.no_hp_ayah);
+            $('#alamat_ayah').val(aset.alamat_ayah);
+            $('#nama_ibu').val(aset.nama_ibu);
+            $('#no_ibu').val(aset.no_hp_ibu);
+            $('#alamat_ibu').val(aset.alamat_ibu);
     });
 
     }
 
     function DetailPerpindahan(id){
-     $('#modalDetail-perpindahan').modal();
+     $('#modalDetail-pembayaran').modal();
        $.ajax({
          url:"<?php echo base_url();?>Admin/history/select/"+id+"",
          success: function(response){
-         $("#form-detail-perpindahan").html(response);
+         $("#form-detail-pembayaran").html(response);
 
          },
          dataType:"html"

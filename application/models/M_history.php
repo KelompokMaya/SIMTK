@@ -13,14 +13,18 @@ class M_history extends CI_Model {
 		return $this->db->get(); */
 
 
-		return $this->db->query('select nama_aset,aset_id, 
+		// return $this->db->query('select nama_aset,aset_id, 
 		
-		(select nama_kampus from tb_kampus where id_kampus=sekarang_kampus_id) as sekarang_kampus,
-		(select nama_fakultas from tb_fakultas where id_fakultas=sekarang_fakultas_id) as sekarang_fakultas, 
-		(select nama_jurusan from tb_jurusan where id_jurusan=sekarang_jurusan_id) as sekarang_jurusan,
-		(select nama_lokasi from tb_lokasi where id_lokasi=sekarang_lokasi_id) as sekarang_lokasi
-		from tb_history GROUP BY aset_id HAVING COUNT((aset_id) > 1) order by id desc;'); 
+		// (select nama_kampus from tb_kampus where id_kampus=sekarang_kampus_id) as sekarang_kampus,
+		// (select nama_fakultas from tb_fakultas where id_fakultas=sekarang_fakultas_id) as sekarang_fakultas, 
+		// (select nama_jurusan from tb_jurusan where id_jurusan=sekarang_jurusan_id) as sekarang_jurusan,
+		// (select nama_lokasi from tb_lokasi where id_lokasi=sekarang_lokasi_id) as sekarang_lokasi
+		// from tb_history GROUP BY aset_id HAVING COUNT((aset_id) > 1) order by id desc;'); 
 
+		return $this->db->query('select tgl_bayar,siswa_id, 
+		(select nama_lengkap from tb_siswa where id_siswa=siswa_id) as nama_lengkap,
+		(select no_induk from tb_siswa where id_siswa=siswa_id) as no_induk 
+		from tb_riwayat_transaksi GROUP BY siswa_id HAVING COUNT((siswa_id) > 1) order by id desc;'); 
 	}
 
 	public function select($id){

@@ -1,5 +1,5 @@
 <?php $i=0;   ?>
-<?php foreach ($DetailPerpindahan->result() as $row): 
+<?php foreach ($DetailPembayaran->result() as $row): 
 if ($i=='0') { ?>
    <h4 style="text-align: center;"><?php echo $row->nama_aset; ?></h4>
 
@@ -7,21 +7,21 @@ if ($i=='0') { ?>
 
 <?php endforeach; ?>
 <div class="box-body table-responsive" id="list-table-menu">
-            <table id="" class="table table1 table-bordered table-striped" style="font-size: 13px">
+            <table id="" class="table table1 table-bordered table-striped" >
                 <thead>
                     <tr style="background:  #3998ad; color: white">
                        
                         <th>No</th>
-                        <th>Dari </th>
-                        <th>Ke</th>
-                        <th style="width: 84px" >Tanggal</th>
+                        <th>Bulan </th>
+                        <th style="text-align: center;">Status</th>
+                        <th>Tanggal Bayar</th>
                         
                                               
                     </tr>
                 </thead>
                 <tbody>
                  
-                 <?php foreach ($DetailPerpindahan->result() as $row): ?>
+                 <!-- <?php foreach ($DetailPembayaran->result() as $row): ?>
                     <tr>
                       <td><?php echo $i; $i++; ?></td>
                       <td><?php echo $row->awal_kampus; ?> / <?php echo $row->awal_fakultas; ?> / <?php echo $row->awal_jurusan; ?> / <?php echo $row->awal_lokasi; ?></td>
@@ -30,7 +30,20 @@ if ($i=='0') { ?>
                         
                       
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach; ?> -->
+                  <tr>
+                      <td>1</td>
+                      <td>January 2017</td>
+                      <td style="text-align: center;"><small class="label  bg-green">sudah bayar</small></td>
+                      <td>2 January 2017</td> 
+                  </tr>
+                  <tr>
+                      <td>2 </td>
+                      <td>February 2017</td>
+                      <td style="text-align: center;"><small class="label  bg-red">belum bayar</small></td> 
+                      <td>-</td>
+                  </tr>
+
                  </tbody>
                 
             </table>

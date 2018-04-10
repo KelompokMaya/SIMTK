@@ -21,8 +21,8 @@ class Siswa extends CI_Controller {
 	}
 
 	public function select($id){
-		$aset=$this->M_aset->select($id)->row();
-		echo json_encode($aset);
+		$siswa=$this->M_siswa->select($id)->row();
+		echo json_encode($siswa);
 
 	}
 

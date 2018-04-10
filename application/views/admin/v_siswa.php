@@ -220,9 +220,9 @@
                         <td style="text-align: center;"><?php echo $row->status; ?></td>
                         <td style=" width: 100px;text-align: center;">
                             <div class="btn-group">
-                                 <button onclick="editAset(<?php echo $row->id; ?>);" class="btn btn-success btn-flat" type="button" data-toggle="tooltip" title="Edit">
+                                 <button onclick="editAset(<?php echo $row->id_siswa; ?>);" class="btn btn-success btn-flat" type="button" data-toggle="tooltip" title="Edit">
                                 <i class="fa fa-pencil"></i></button>
-                                <button onclick="deleteSiswa(<?php echo $row->id; ?>);" class="btn btn-danger btn-flat" type="button" data-toggle="tooltip" title="Hapus">
+                                <button onclick="deleteSiswa(<?php echo $row->id_siswa; ?>);" class="btn btn-danger btn-flat" type="button" data-toggle="tooltip" title="Hapus">
                                 <i class="fa fa-trash"></i></button>
                             </div>
                         </td>

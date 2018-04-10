@@ -5,8 +5,8 @@ class M_siswa extends CI_Model {
 
 	public function select($id){
 		$this->db->select('*');
-		$this->db->where('id_aset',$id);
-		return $this->db->get('tb_aset');
+		$this->db->where('id_siswa',$id);
+		return $this->db->get('tb_siswa');
 
 		/* $this->db->select('*');
 		$this->db->from('tb_aset');
@@ -106,7 +106,7 @@ class M_siswa extends CI_Model {
 
 	public function select_all(){
 		$this->db->select('*');
-		$this->db->order_by('id', 'DESC');
+		$this->db->order_by('id_siswa', 'DESC');
 		//$this->db->where('aktif', 'ya');
 		return $this->db->get('tb_siswa');
 	}

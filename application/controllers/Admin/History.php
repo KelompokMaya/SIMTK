@@ -18,8 +18,8 @@ class History extends CI_Controller {
 		$this->load->view('admin/v_history',$data);
 	}
 	public function select($id){
-		$data['DetailPerpindahan']=$this->M_history->select($id);
-		$this->load->view('admin/v_historyPerpindahan',$data);
+		$data['DetailPembayaran']=$this->M_history->select($id);
+		$this->load->view('admin/v_historyPembayaran',$data);
 	}
 
 }
