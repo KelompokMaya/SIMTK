@@ -76,13 +76,13 @@ $('#sidebar-dashboard').click(function(event) {
 	});
 });
 
-$('#sidebar-lokasi').click(function(event) {
+$('#sidebar-pembayaran').click(function(event) {
 	$('#main-content').html('');
 	$('#preloader').css('display','block');
-	$.get(base_url+"Admin/Lokasi", function(data) {
+	$.get(base_url+"Admin/Pembayaran", function(data) {
 		$('#preloader').css('display','none');
 		$('#main-content').html(data);
-		setCookie("sidebar", "lokasi", 0.5);
+		setCookie("sidebar", "pembayaran", 0.5);
 		dataTable();
 	});
 });

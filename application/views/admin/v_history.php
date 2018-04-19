@@ -17,6 +17,7 @@
     }
 </style>
 
+
 <div class="col-xs-12">
     <div class="box">
         
@@ -40,7 +41,7 @@
                         <td><?php echo $i; $i++; ?></td>
                         <td><?php echo $row->no_induk; ?></td>
                         <td><?php echo $row->nama_lengkap; ?></td>
-                        <td><?php echo $row->tgl_bayar; ?></td>
+                        <td><?php echo 'xx'; ?></td>
                         <td>
                           <div class="btn-group">
                             <button onclick="Detail(<?php echo $row->siswa_id; ?>);" class="btn btn-primary btn-flat" type="button" data-toggle="tooltip" >
@@ -212,7 +213,7 @@
      
       $.get(base_url+"Admin/Siswa/select/"+id, function(aset) {
             var aset=jQuery.parseJSON(aset+"");
-             $('#modalDetail-aset').modal();
+            $('#modalDetail-aset').modal();
             $('#nama').val(aset.nama_lengkap);
             $('#nis').val(aset.no_induk);
             $('#tempat_lahir').val(aset.tempat_lahir);

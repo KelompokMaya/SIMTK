@@ -17,61 +17,20 @@ class M_siswa extends CI_Model {
 		return $this->db->get();*/
 	}
 
-	public function currLokasi($id){
-		$this->db->select('*');
-		$this->db->from('tb_aset');
-		$this->db->join('tb_kampus', 'tb_kampus.id_kampus = tb_aset.kampus_id','left');
-		$this->db->join('tb_fakultas', 'tb_fakultas.id_fakultas = tb_aset.fakultas_id','left');
-		$this->db->join('tb_jurusan', 'tb_jurusan.id_jurusan = tb_aset.jurusan_id','left');
-		$this->db->join('tb_lokasi', 'tb_lokasi.id_lokasi = tb_aset.lokasi_id', 'left');
-		$this->db->where('tb_aset.id_aset',$id);
-		return $this->db->get();
+	
 
-		
-	}
+	public function create($data){
 
-	public function create($nama, $manufaktur, $status,$kampus_id, $fakultas_id, $jurusan_id, $lokasi_id, $noseri, $tipe, $model,$noinventory,$tgldipasang, $trakhirdiperbaiki){
 
-		$data = array(
-			'nama' => $nama,
-			'manufaktur' => $manufaktur,
-			'status' => $status,
-			'kampus_id' => $kampus_id,
-			'fakultas_id' => $fakultas_id,
-			'jurusan_id' => $jurusan_id,
-			'lokasi_id'=> $lokasi_id,
-			'noseri'=> $noseri,
-			'tipe'=> $tipe,
-			'model'=> $model,
-			'noinventory'=> $noinventory,
-			'tgldipasang'=> $tgldipasang,
-			'trakhir_diperbaiki'=> $trakhirdiperbaiki
-
-		);
-
-		$this->db->insert('tb_aset', $data);
+		$this->db->insert('tb_siswa', $data);
 		//print_r($this->input->post());	
 	}
 
-	public function update($id, $nama, $manufaktur, $status ,/*$fakultas_id, $jurusan_id, $lokasi_id,*/ $noseri, $tipe, $model,$noinventory,$tgldipasang, $trakhirdiperbaiki){
+	public function update($id,$data){
 
-		$data = array(
-			'nama' => $nama,
-			'manufaktur' => $manufaktur,
-			'status' => $status,
-			/*'fakultas_id' => $fakultas_id,
-			'jurusan_id' => $jurusan_id,
-			'lokasi_id'=> $lokasi_id,*/
-			'noseri'=> $noseri,
-			'tipe'=> $tipe,
-			'model'=> $model,
-			'noinventory'=> $noinventory,
-			'tgldipasang'=> $tgldipasang,
-			'trakhir_diperbaiki'=> $trakhirdiperbaiki
 
-		);
-		$this->db->where('id_aset',$id);
-		$this->db->update('tb_aset', $data);
+		$this->db->where('id_siswa',$id);
+		$this->db->update('tb_siswa', $data);
 		//print_r($this->input->post());	
 	}
 

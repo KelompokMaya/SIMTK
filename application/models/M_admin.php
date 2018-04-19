@@ -13,12 +13,12 @@ class M_admin extends CI_Model {
 	public function select_all(){
 		$this->db->select('*');
 		//$this->db->where('aktif', 'ya');
-		return $this->db->get('tb_user');
+		return $this->db->get('tb_admin');
 	}
 	public function select($id){
 		$this->db->select('*');
 		$this->db->where('id',$id);
-		return $this->db->get('tb_user');
+		return $this->db->get('tb_admin');
 	}
 
 	public function create($username, $fullname, $pass, $email, $phone, $lokasi, $aktif){
@@ -46,7 +46,7 @@ class M_admin extends CI_Model {
 
 		);
 		$this->db->where('id',$id);
-		$this->db->update('tb_user',$data);
+		$this->db->update('tb_admin',$data);
 
 	}
 	

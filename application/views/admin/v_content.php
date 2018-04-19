@@ -11,13 +11,13 @@
 <section class="content">
 
     <!-- Preloader -->
-    <div id="preloader" style="display: none;">
+   <!--  <div id="preloader" style="display: none;">
         <div class="box" style="height: 80px;">
             <div class="overlay">
                 <i class="fa fa-refresh fa-spin"></i>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <div id="main-content" class="row"></div><!-- .row -->
 

@@ -37,13 +37,11 @@
             <table id="" class="table table1 table-bordered table-hover">
                 <thead>
                     <tr>
-                        <th>No</th>
+                        <th style="width: 5%">No</th>
                         <th>Username</th>
                         <th>Fullname</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Lokasi</th>
-                        <th>Aktif</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -51,13 +49,12 @@
                 <?php $i=1; ?>
                 <?php foreach ($user->result() as $row): ?>
                     <tr>
-                        <td><?php echo $i; $i++; ?></td>
+                        <td ><?php echo $i; $i++; ?></td>
                         <td><?php echo $row->username; ?></td>
                         <td><?php echo $row->fullname; ?></td>
                         <td><?php echo $row->email; ?></td>
                         <td><?php echo  $row->phone; ?></td>
-                        <td><?php echo $row->lokasi; ?></td>
-                        <td><?php echo $row->aktif; ?></td>
+                        
                          
                         <td style="text-align: center;">
                           <div class="btn-group">
@@ -79,8 +76,6 @@
                         <th>Fullname</th>
                         <th>Email</th>
                         <th>Phone</th>
-                        <th>Lokasi</th>
-                        <th>Aktif</th>
                         <th>Action</th>
                     </tr>
                 </tfoot>

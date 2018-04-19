@@ -1,109 +1,42 @@
-<div id="editor-wrapper" class="col-xs-12" style="display: none;">
-    <div class="box">
-        <div class="box-header">
-          <h3 id="title-edit" class="box-title">Tambah Data Siswa</h3>
-          
-        </div>
-        <!-- /.box-header -->
-        <div class="box-body" id="add-siswa">
-            <div class="form-group">
-               <form role="form" method="post" action="" id="form-create-siswa">
-                  <div class="col-xs-12">
-                          <div class="btn-group pull-right">
-                            <button id="btn-cancel" class="btn btn-default btn-flat">Batal</button>
-                            <button type="button" class="btn btn-primary" data-loading-text="Loading..." onclick="submitx(this);" id="btn-submit">Tambah</button>                  
-                        </div>
-                  </div>
-                <div class="col-xs-6">
 
-
-                        <div class="form-group">
-                          <label>Nama</label>
-                          <input name="nama" id="nama" type="text" class="form-control" data-link=""  placeholder="input ...">
-                        </div>
-                        <div class="form-group">
-                          <label>No Induk Siswa</label>
-                          <input name="nis" id="nis" type="text" class="form-control"  placeholder="input ...">
-                        </div>
-                        <div class="form-group">
-                          <label>Tempat Lahir</label>
-                          <input name="tempat_lahir" id="tempat_lahir" type="text" class="form-control"  placeholder="input ...">
-                        </div>
-                         <div class="form-group">
-                          <label>Tanggal Lahir</label>
-                          <input name="tanggal_lahir" id="tanggal_lahir" type="date" class="form-control"  placeholder="input ...">
-                        </div>
-                        <div class="form-group">
-                          <label>Jenis Kelamin</label>
-                          <select name="jenis_kelamin" id="jenis_kelamin" class="form-control " >
-                              <option  id="cur-jk" ></option>
-                              <option value="Laki-laki" >Laki-laki</option>
-                              <option value="Perempuan" >Perempuan</option>
-                          </select>  
-                        </div>
-                        <div class="form-group">
-                          <label>Alamat</label>
-                          <textarea id="alamat" name="alamat" data-link="" class="form-control "></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label>Status</label>
-                          <select name="status" id="status" class="form-control " >
-                              <option id="cur-status"></option>
-                              <option value="Aktif" >Aktif</option>
-                              <option value="Non Aktif" >Non Aktif</option>
-                              <option value="Lulus" >Lulus</option>
-                          </select>  
-                        </div>
-                        
-                        
+<div id="pencarian" class="col-xs-12" style="display: none;">
+   <div class="box box-info">
+            <div class="box-header with-border">
+              <h3 class="box-title">Pencarian</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form class="form-horizontal">
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="inputEmail3" class="col-sm-1 control-label">Kelompok</label>
+                    <div class="col-sm-5">
+                        <select name="editor-tujuan_surat" id="editor-tujuan_surat" class="form-control"  >
+                          <option value="Internal" >Kelompok 1</option>
+                          <option value="External" >Kelpmpok 2</option>
+                        </select>      
+                     </div>
                 </div>
-                <div class="col-xs-6">
-                        <div class="form-group">
-                          <label>Tahun Diterima</label>
-                          <input name="tahun_diterima" id="tahun_diterima" type="text" class="form-control"  placeholder="input ...">
-                        </div>
-
-                        <div class="form-group">
-                          <label>Nama Ayah</label>
-                          <input name="nama_ayah" id="nama_ayah" type="text" class="form-control"  placeholder="input ...">
-                        </div>
-                        <div class="form-group">
-                          <label>No HP Ayah</label>
-                          <input name="no_ayah" id="no_ayah" type="text" class="form-control"  placeholder="input ...">
-                        </div>
-                         <div class="form-group">
-                          <label>Alamat Ayah</label>
-                          <textarea id="alamat_ayah" name="alamat_ayah" data-link="" class="form-control "></textarea>
-                        </div>
-                        <div class="form-group">
-                          <label>Nama Ibu</label>
-                          <input name="nama_ibu" id="nama_ibu" type="text" class="form-control"  placeholder="input ...">
-                        </div>
-                        <div class="form-group">
-                          <label>No HP Ibu</label>
-                          <input name="no_ibu" id="no_ibu" type="text" class="form-control"  placeholder="input ...">
-                        </div>
-                         <div class="form-group">
-                          <label>Alamat Ibu</label>
-                          <textarea id="alamat_ibu" name="alamat_ibu"  class="form-control "></textarea>
-                        </div>
-
-                         <input name="createby" id="createby" type="hidden" class="form-control"  value="<?php echo $currUser; ?>">
-                         <input name="create_time" id="create_time" type="hidden" class="form-control"  value="<?php echo date("Y/m/d") ?>">
-                        
-                        
+                <div class="form-group">
+                  <label for="inputPassword3" class="col-sm-1 control-label">Periode</label>
+                      <div class="col-sm-5">
+                        <select name="editor-tujuan_surat" id="editor-tujuan_surat" class="form-control"  >
+                          <option value="Internal" >tes 1</option>
+                          <option value="External" >tes 2</option>
+                        </select>      
+                     </div>
                 </div>
                 
-              </form>
-            </div>
-            
-           
-        </div>
-
-
-    </div>
+              </div>
+              <!-- /.box-body -->
+              <div class="box-footer">
+                <button id="btn-cancel" class="btn btn-default">Cancel</button>
+                <button type="submit" class="btn btn-info pull-right">Cari</button>
+              </div>
+              <!-- /.box-footer -->
+            </form>
+          </div>
 </div>
-
 
 <div id="table-wrapper" class="col-xs-12">
     <div class="box">
@@ -114,9 +47,11 @@
             <div id="alert-hapus" class="alert alert-danger" style="display: none;">
                 <strong>Berhasil!</strong> Data Berhasil Dihapus !!
             </div>
-          <h3 class="box-title">Table Data Siswa</h3>
-          <button id="btn-add" class="btn btn-primary btn-flat pull-right" data-toggle="tooltip" onclick="addSiswa();"><i class="fa fa-plus" ></i> Tambah Data Siswa</button>
+          <h3 class="box-title">Table Pembayaran</h3>
+
+          <button id="btn-add" class="btn btn-primary btn-flat pull-right" data-toggle="tooltip" onclick="addSiswa();"><i class="fa fa-plus" ></i> Tambah Data Pembayaran </button>
           <a href="<?php echo base_url('Admin/Excel/export_excel') ?>" class="btn btn-warning btn-flat pull-right" data-toggle="tooltip" ><i class="fa fa-download " ></i> Export Data</a>
+          <button id="btn-cari" class="btn btn-info btn-flat pull-right" data-toggle="tooltip" onclick="cari();"><i class="fa fa-search" ></i> Pencarian </button>
         </div>
         <!-- /.box-header 3998ad -->
         <div class="box-body table-responsive">
@@ -125,10 +60,10 @@
                     <tr style="background:  #551E1E; color: white; ">
                       
                         <th style="width: 10px;text-align: center;">No</th>
-                        <th style="text-align: center;">No Induk</th>
+                        <th style="text-align: center;">ID Bayar</th>
                         <th style="text-align: center;">Nama Siswa</th>
-                        <th style="text-align: center;">Tahun Diterima</th>
-                        <th style="text-align: center;">Status</th>
+                        <th style="text-align: center;">No Induk</th>
+                        <th style="text-align: center;">Kelompok</th>
                         <th style="width: 150px; text-align: center;">Aksi</th>
                     </tr>
                 </thead>
@@ -137,9 +72,9 @@
                  <?php foreach ($aset->result() as $row): ?>
                     <tr>
                        <td style="text-align: center;"><?php echo $i; $i++; ?></td>
-                        <td><?php echo $row->no_induk; ?></td>
-                        <td><?php echo $row->nama_lengkap; ?></td>
                         <td style="text-align: center;"><?php echo $row->tahun_diterima; ?></td>
+                        <td><?php echo $row->nama_lengkap; ?></td>
+                        <td><?php echo $row->no_induk; ?></td>
                         <td style="text-align: center;"><?php echo $row->status; ?></td>
                         <td style=" width: 100px;text-align: center;">
                             <div class="btn-group">
@@ -155,10 +90,10 @@
                 <tfoot>
                     <tr>
                         <th style="width: 10px;text-align: center;">No</th>
-                        <th style="text-align: center;">No Induk</th>
+                        <th style="text-align: center;">ID Bayar</th>
                         <th style="text-align: center;">Nama Siswa</th>
-                        <th style="text-align: center;">Tahun Diterima</th>
-                        <th style="text-align: center;">Status</th>
+                        <th style="text-align: center;">No Induk</th>
+                        <th style="text-align: center;">Kelompok</th>
                         <th style="width: 150px; text-align: center;">Aksi</th>
                     </tr>
                 </tfoot>
@@ -233,6 +168,14 @@
         $('#btn-add').addClass('disabled');
         $('#title-edit').html('Tambah Data Siswa'); 
         $('#btn-submit').html('Tambah');
+    }
+     function cari() {
+        if($('#pencarian').css('display')=='none'){
+            $("#pencarian").show('slow');
+            //$('#editor-wrapper').css('display', 'block');
+            
+        }
+        $('#btn-cari').addClass('disabled');
     }
     //tambah dan edit siswa
         var submitx= function(ctx) {
@@ -369,8 +312,10 @@
    $(document).on('click', '#btn-cancel', function(event) {
         event.preventDefault();
         $('#btn-add').removeClass('disabled');  
+        $('#btn-cari').removeClass('disabled');  
         // $('#editor-wrapper').css('display', 'none');
         // $('#editor-wrapper2').css('display', 'none');
+        $("#pencarian").hide('slow');
         $("#editor-wrapper").hide('slow');
         $('#form-create-siswa').trigger("reset");
         

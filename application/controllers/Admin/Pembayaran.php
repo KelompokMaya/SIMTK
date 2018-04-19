@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Siswa extends CI_Controller {
+class Pembayaran extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
@@ -18,7 +18,7 @@ class Siswa extends CI_Controller {
 	public function index(){
 		$data['aset']=$this->M_siswa->select_all();
 		$data['currUser']=$this->session->userdata('fullname');
-		$this->load->view('admin/v_siswa',$data);
+		$this->load->view('admin/v_pembayaran',$data);
 	}
 
 	public function select($id){
@@ -66,9 +66,6 @@ class Siswa extends CI_Controller {
 		$this->index();
 	}
 
-	public function currLokasi($id){
-		$lokasi=$this->M_aset->currLokasi($id)->row();
-		echo json_encode($lokasi);
-	}
+	
 }
 	
