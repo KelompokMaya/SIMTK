@@ -5,7 +5,7 @@ class M_siswa extends CI_Model {
 
 	public function select($id){
 		$this->db->select('*');
-		$this->db->where('id_siswa',$id);
+		$this->db->where('no_induk',$id);
 		return $this->db->get('tb_siswa');
 
 		/* $this->db->select('*');

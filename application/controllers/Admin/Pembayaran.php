@@ -7,6 +7,7 @@ class Pembayaran extends CI_Controller {
 		parent::__construct();
 		$this->load->model('M_admin');
 		$this->load->model('M_siswa');
+		$this->load->model('M_biaya');
 
 		if (!$this->session->userdata('isLoggedIn')){
 			$this->load->view('admin/v_redirect_login');
@@ -16,10 +17,30 @@ class Pembayaran extends CI_Controller {
 
 
 	public function index(){
+		$data['biaya']=$this->M_biaya->select_all();
 		$data['aset']=$this->M_siswa->select_all();
 		$data['currUser']=$this->session->userdata('fullname');
 		$this->load->view('admin/v_pembayaran',$data);
 	}
+	public function create(){
+		
+		$data['biaya']=$this->input->post('array');
+		$data['priode_pembayaran']=$this->input->post('bulan').' '.$this->input->post('tahun');
+		$data['jumlah']= count($data['biaya']);
+
+		$this->load->view('admin/v_contoh',$data);
+
+	}
+
+
+
+
+
+
+
+
+
+
 
 	public function select($id){
 		$siswa=$this->M_siswa->select($id)->row();
@@ -27,11 +48,7 @@ class Pembayaran extends CI_Controller {
 
 	}
 
-	public function create(){
-		
-		$this->M_siswa->create($this->input->post());
-		$this->index();
-	}
+	
 	
 	public function update(){
 		$id=$this->input->post('id_siswa');

@@ -26,6 +26,11 @@ class Siswa extends CI_Controller {
 		echo json_encode($siswa);
 
 	}
+	public function select_siswa($id){
+		$data['siswa']=$this->M_siswa->select($id)->result();
+		$this->load->view('admin/ajax/data_siswa',$data);
+
+	}
 
 	public function create(){
 		
@@ -66,9 +71,6 @@ class Siswa extends CI_Controller {
 		$this->index();
 	}
 
-	public function currLokasi($id){
-		$lokasi=$this->M_aset->currLokasi($id)->row();
-		echo json_encode($lokasi);
-	}
+	
 }
 	

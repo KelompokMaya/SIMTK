@@ -18,7 +18,9 @@
 // echo '<br/> <br/>';
 // print_r($tf_tersimpan_index);
 // echo '<br/> <br/>';
-print_r($xx);
+print_r($biaya);
+echo $jumlah;
+echo $priode_pembayaran;
  echo '<br/> <br/>';
  //echo $jum_dokumen;
 ?> 

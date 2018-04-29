@@ -29,9 +29,10 @@
                 
               </div>
               <!-- /.box-body -->
-              <div class="box-footer">
-                <button id="btn-cancel" class="btn btn-default">Cancel</button>
-                <button type="submit" class="btn btn-info pull-right">Cari</button>
+              <div class="box-header">
+                <button type="submit" class="btn btn-info pull-right btn-flat">Cari</button>
+                <button id="btn-cancel" class="btn btn-default pull-right btn-flat">Cancel</button>
+              
               </div>
               <!-- /.box-footer -->
             </form>
@@ -104,6 +105,91 @@
     <!-- /.box -->
 </div><!-- .col -->
 
+<!--modal add Pembayaran!-->
+<div id="modalAdd-pembayaran" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+   <div class="modal-dialog" role="document">
+      <div class="modal-content">
+         <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title" id="myModalLabel">Tambah Data Pembayaran</h4>
+         </div>
+        <form role="form" method="post" action="" id="form-create-pembayaran">
+         <div class="modal-body col-xs-12">
+            <div class=" input-group">
+                <input type="text" class="form-control" id="cari-nis" name="cari-nis" placeholder="Masukan No Induk Siswa">
+                 <span class="input-group-btn">
+                    <button type="button" class="btn btn-info btn-flat" onclick="cariNIS();" >Cari</button>
+                 </span>
+            </div>
+            <br>
+            <div id="tampildata" >
+            <div class="form-group">
+                  <label >Nama</label>
+                  <input name="nama" id="nama" type="text" class="form-control"  readonly>
+            </div>
+            <div class="form-group">
+                  <label >Kelompok</label>
+                  <input  name="username" id="kelompok" type="text" class="form-control"  readonly>
+            </div>
+            </div>
+             <div class="form-group">
+                  <label >Priode Pembayaran</label>
+                  <div class=" control-label"  >
+                        <select name="priode-pembayaran" id="bulan" class="form-control "  >
+                              <option value="Januari" >Januari</option>
+                              <option value="Februari" >Februari</option>
+                              <option value="Maret" >Maret</option>
+                              <option value="April" >April</option>
+                              <option value="Mei" >Mei</option>
+                              <option value="Juni" >Juni</option>
+                              <option value="Juli" >Juli</option>
+                              <option value="Agustus" >Agustis</option>
+                              <option value="September" >September</option>
+                              <option value="Oktober" >Oktober</option>
+                              <option value="November" >November</option>
+                              <option value="Desember" >Desember</option>
+                              
+                          </select> 
+                          <br>
+                          <select name="priode-pembayaran" id="tahun" class="form-control"  >
+                              <option value="2017" >2017</option>
+                              <option value="2018" >2018</option>
+                              <option value="2019" >2019</option>
+                              <option value="2020" >2020</option>
+                              <option value="2021" >2021</option>
+                              
+                          </select>                                       
+                  </div>
+            </div>
+            <hr>
+            <div style="text-align: center;font-size: 16px"><b>Item Pembayaran</b></div>
+            <hr>
+            <div class="form-group">
+              <?php
+               $i=1;
+               foreach ($biaya->result() as $row): ?>
+                  <div class="checkbox">
+                    <label class="col-sm-6">
+                      <input name="biaya" value="<?php echo $row->id; ?>" type="checkbox">
+                      <?php echo $row->nama_biaya; ?>
+                    </label>
+                    <label class="col-sm-6">Rp. <?php echo $row->besaran_biaya; ?>,-</label>
+                  </div>
+               <?php 
+               $i++;
+               endforeach; ?>    
+            </div>
+          
+         </div>
+         <div class="modal-footer">
+          <div class="btn-group">
+            <button type="button" class="btn btn-success btn-flat" id="btn-add-pembayaran" data-dismiss="modal">Submit</button>
+          </div>
+        </div>
+      </form>
+      </div>
+   </div>
+</div>
 
  <!-- modal konfirmasi hapus -->
 <div id="modalDelete-siswa" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -125,6 +211,7 @@
       </div>
    </div>
 </div>
+
 
 
 
@@ -154,22 +241,13 @@
   
      $('#modalWarning-user').appendTo('body');
      $('#modalDelete-siswa').appendTo('body');
-
+     
     function addSiswa() {
-        if($('#editor-wrapper').css('display')=='none'){
-            $("#editor-wrapper").show('slow');
-            //$('#editor-wrapper').css('display', 'block');
-            
-        }
-        if($('#editor-wrapper2').css('display')=='block'){
-          $('#editor-wrapper2').css('display', 'none');
-            
-        }
-        $('#btn-add').addClass('disabled');
+        $('#modalAdd-pembayaran').modal();
         $('#title-edit').html('Tambah Data Siswa'); 
         $('#btn-submit').html('Tambah');
     }
-     function cari() {
+    function cari() {
         if($('#pencarian').css('display')=='none'){
             $("#pencarian").show('slow');
             //$('#editor-wrapper').css('display', 'block');
@@ -177,77 +255,35 @@
         }
         $('#btn-cari').addClass('disabled');
     }
-    //tambah dan edit siswa
-        var submitx= function(ctx) {
-        event.preventDefault();
-        //$(ctx).addClass('disabled');
 
-        // if($('#editor-judul').val()=='' || CKEDITOR.instances['editor-langkah'].getData()=='' || $('#editor-deskripsi').val()==''){
-        //     $('#modal-message .modal-body').text('Silakan Lengkapi Inputan');
-        //     $('#modal-message').modal();
-        //     return;
+    function cariNIS(){
+      Nis = document.getElementById("cari-nis").value;
+         
+         $.ajax({
+           url:"<?php echo base_url();?>Admin/Siswa/select_siswa/"+Nis+"",
+           success: function(response){
+           $("#tampildata").html(response);
+           
+           },
+           dataType:"html"
+         });
 
-        //} 
-
-        if($('#btn-submit').html()=='Tambah'){ 
-            $('#editor-wrapper').css('display', 'none');
-            $('#preloader').css('display','block');
-            var nama_lengkap = $('#nama').val();
-            var no_induk = $('#nis').val();
-            var tempat_lahir = $('#tempat_lahir').val();
-            var tanggal_lahir = $('#tanggal_lahir').val();
-            var jenis_kelamin = $('#jenis_kelamin').val(); 
-            var alamat= $('#alamat').val();
-            var status = $('#status').val();
-            var tahun_diterima = $('#tahun_diterima').val();
-            var nama_ayah = $('#nama_ayah').val();
-            var no_hp_ayah = $('#no_ayah').val();
-            var alamat_ayah = $('#alamat_ayah').val();
-            var nama_ibu = $('#nama_ibu').val();
-            var no_hp_ibu = $('#no_ibu').val();
-            var alamat_ibu= $('#alamat_ibu').val();
-            var createby= $('#createby').val();
-            var create_date = $('#create_time').val()
-            
-            $.post(base_url+"Admin/Siswa/create", {nama_lengkap: nama_lengkap, no_induk: no_induk, tempat_lahir: tempat_lahir,tanggal_lahir:tanggal_lahir,jenis_kelamin:jenis_kelamin,alamat:alamat,status:status,tahun_diterima:tahun_diterima,nama_ayah:nama_ayah,no_hp_ayah:no_hp_ayah,alamat_ayah:alamat_ayah,nama_ibu:nama_ibu,no_hp_ibu:no_hp_ibu,alamat_ibu:alamat_ibu, createby:createby,create_date:create_date}, function(data, textStatus, xhr) {
-                $('#preloader').css('display','none');
+         return false;
+    }
+    $('#btn-add-pembayaran').one('click',function(event) {
+        var id_siswa = $('#form-create-pembayaran').find('#id_siswa').val();
+        var bulan = $('#form-create-pembayaran').find('#bulan').val();
+        var tahun = $('#form-create-pembayaran').find('#tahun').val();
+        var array = $.map($('input[name="biaya"]:checked'), function(c){return c.value; });
+               
+        $.post(base_url+"Admin/Pembayaran/create/",{array:array,id_siswa:id_siswa,bulan:bulan,tahun:tahun}, function(data) {
                 $('#main-content').html(data);
-                $(".table1").DataTable();
-                $("#alert-tambah").css("display","block");
-                $("#alert-tambah").fadeOut(3000);
-            }); 
-        }
-        else if($('#btn-submit').html()=='Edit'){
-            $('#editor-wrapper').css('display', 'none');
-            $('#preloader').css('display','block');
-            var id_siswa=$('#nama').attr('data-link');
-            var nama_lengkap = $('#nama').val();
-            var no_induk = $('#nis').val();
-            var tempat_lahir = $('#tempat_lahir').val();
-            var tanggal_lahir = $('#tanggal_lahir').val();
-            var jenis_kelamin = $('#jenis_kelamin').val(); 
-            var alamat= $('#alamat').val();
-            var status = $('#status').val();
-            var tahun_diterima = $('#tahun_diterima').val();
-            var nama_ayah = $('#nama_ayah').val();
-            var no_hp_ayah = $('#no_ayah').val();
-            var alamat_ayah = $('#alamat_ayah').val();
-            var nama_ibu = $('#nama_ibu').val();
-            var no_hp_ibu = $('#no_ibu').val();
-            var alamat_ibu= $('#alamat_ibu').val();
-            var modifiedby= $('#createby').val();
-            var modified_date = $('#create_time').val()
-            $.post(base_url+"Admin/Siswa/update", {id_siswa:id_siswa,nama_lengkap: nama_lengkap, no_induk: no_induk, tempat_lahir: tempat_lahir,tanggal_lahir:tanggal_lahir,jenis_kelamin:jenis_kelamin,alamat:alamat,status:status,tahun_diterima:tahun_diterima,nama_ayah:nama_ayah,no_hp_ayah:no_hp_ayah,alamat_ayah:alamat_ayah,nama_ibu:nama_ibu,no_hp_ibu:no_hp_ibu,alamat_ibu:alamat_ibu, modifiedby:modifiedby,modified_date:modified_date}, function(data, textStatus, xhr) {
-                $('#preloader').css('display','none');
-                $('#main-content').html(data);
-                $(".table1").DataTable();
-                $("#alert-tambah").css("display","block");
-                $("#alert-tambah").fadeOut(3000);
+                dataTable();
+              });
+      });
 
-            }); 
-        }
-        
-    };
+
+ 
     //edit siswa
     function editSiswa(id) {
         if($('#editor-wrapper').css('display')=='block'){

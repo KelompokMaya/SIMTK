@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 10, 2018 at 09:18 AM
+-- Generation Time: Apr 29, 2018 at 05:46 PM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.5
 
@@ -30,15 +30,17 @@ CREATE TABLE `tb_admin` (
   `id` int(11) NOT NULL,
   `username` varchar(100) NOT NULL,
   `fullname` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `phone` varchar(100) NOT NULL,
+  `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_admin`
 --
 
-INSERT INTO `tb_admin` (`id`, `username`, `fullname`, `password`) VALUES
-(1, 'kim', 'kim arya', 'fb1eaf2bd9f2a7013602be235c305e7a');
+INSERT INTO `tb_admin` (`id`, `username`, `fullname`, `password`, `phone`, `email`) VALUES
+(1, 'kim', 'kim arya', 'fb1eaf2bd9f2a7013602be235c305e7a', '12121312', 'kim@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -406,6 +408,26 @@ INSERT INTO `tb_aset` (`id_aset`, `nama`, `status`, `manufaktur`, `noseri`, `tip
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `tb_biaya`
+--
+
+CREATE TABLE `tb_biaya` (
+  `id` int(11) NOT NULL,
+  `nama_biaya` varchar(100) NOT NULL,
+  `besaran_biaya` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `tb_biaya`
+--
+
+INSERT INTO `tb_biaya` (`id`, `nama_biaya`, `besaran_biaya`) VALUES
+(1, 'SPP Bulanan', 100000),
+(2, 'Extrakulikuler a', 50000);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tb_fakultas`
 --
 
@@ -682,15 +704,20 @@ INSERT INTO `tb_lokasi` (`id_lokasi`, `kampus_id`, `fakultas_id`, `jurusan_id`, 
 CREATE TABLE `tb_riwayat_transaksi` (
   `id` int(11) NOT NULL,
   `siswa_id` int(11) NOT NULL,
-  `tgl_bayar` date NOT NULL
+  `biaya_id` int(11) NOT NULL,
+  `periode` varchar(40) NOT NULL,
+  `createby` varchar(100) NOT NULL,
+  `create_date` date NOT NULL,
+  `modifiedby` varchar(100) NOT NULL,
+  `modified_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_riwayat_transaksi`
 --
 
-INSERT INTO `tb_riwayat_transaksi` (`id`, `siswa_id`, `tgl_bayar`) VALUES
-(1, 1, '2018-04-10');
+INSERT INTO `tb_riwayat_transaksi` (`id`, `siswa_id`, `biaya_id`, `periode`, `createby`, `create_date`, `modifiedby`, `modified_date`) VALUES
+(1, 1, 0, '', '', '0000-00-00', '', '2018-04-10');
 
 -- --------------------------------------------------------
 
@@ -701,6 +728,7 @@ INSERT INTO `tb_riwayat_transaksi` (`id`, `siswa_id`, `tgl_bayar`) VALUES
 CREATE TABLE `tb_siswa` (
   `id_siswa` int(11) NOT NULL,
   `no_induk` varchar(20) NOT NULL,
+  `kelompok` varchar(100) NOT NULL,
   `nama_lengkap` varchar(100) NOT NULL,
   `tempat_lahir` varchar(100) NOT NULL,
   `tanggal_lahir` date NOT NULL,
@@ -713,16 +741,21 @@ CREATE TABLE `tb_siswa` (
   `alamat_ayah` text NOT NULL,
   `nama_ibu` varchar(100) NOT NULL,
   `no_hp_ibu` varchar(15) NOT NULL,
-  `alamat_ibu` text NOT NULL
+  `alamat_ibu` text NOT NULL,
+  `createby` varchar(100) NOT NULL,
+  `create_date` date NOT NULL,
+  `modifiedby` varchar(100) NOT NULL,
+  `modified_date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tb_siswa`
 --
 
-INSERT INTO `tb_siswa` (`id_siswa`, `no_induk`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `status`, `tahun_diterima`, `nama_ayah`, `no_hp_ayah`, `alamat_ayah`, `nama_ibu`, `no_hp_ibu`, `alamat_ibu`) VALUES
-(1, '1408605007', 'kadek aryana dwi putra', '2014', '1996-04-30', 'Laki-Laki', 'jl.Raya AAN, Klungkung BAli', 'Aktif', '2014', 'kim', '08123456', 'aan', 'sung', '21213121', 'aan'),
-(2, '1408605014', 'widarma putra', '2014', '1996-04-30', 'Laki-Laki', 'jl.Raya AAN, Klungkung BAli', 'Aktif', '2015', 'kim', '08123456', 'aan', 'sung', '21213121', 'aan');
+INSERT INTO `tb_siswa` (`id_siswa`, `no_induk`, `kelompok`, `nama_lengkap`, `tempat_lahir`, `tanggal_lahir`, `jenis_kelamin`, `alamat`, `status`, `tahun_diterima`, `nama_ayah`, `no_hp_ayah`, `alamat_ayah`, `nama_ibu`, `no_hp_ibu`, `alamat_ibu`, `createby`, `create_date`, `modifiedby`, `modified_date`) VALUES
+(1, '1408605007', 'kelompok A', 'kadek aryana dwi putra', '2014', '1996-04-30', 'Laki-Laki', 'jl.Raya AAN, Klungkung BAli', 'Aktif', '2014', 'kim', '08123456', 'aan', 'sung', '21213121', 'aan', '', '0000-00-00', '', '0000-00-00'),
+(2, '1408605014', 'kelompok A', 'widarma putra', '2014', '1996-04-30', 'Laki-Laki', 'jl.Raya AAN, Klungkung BAli', 'Aktif', '2015', 'kim', '08123456', 'aan', 'sung', '21213121', 'aan', '', '0000-00-00', '', '0000-00-00'),
+(13, '1233312', 'kelompok B', 'lee jung hyun', 'seoul', '2018-04-23', 'Perempuan', 'korea', 'Lulus', '2014', 'lee hyun jae', '4123423', 'jauh', 'park soo dae', '3435234', 'jauh', 'kim arya', '2018-04-19', 'kim arya', '2018-04-19');
 
 --
 -- Indexes for dumped tables
@@ -739,6 +772,12 @@ ALTER TABLE `tb_admin`
 --
 ALTER TABLE `tb_aset`
   ADD PRIMARY KEY (`id_aset`);
+
+--
+-- Indexes for table `tb_biaya`
+--
+ALTER TABLE `tb_biaya`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `tb_fakultas`
@@ -797,6 +836,11 @@ ALTER TABLE `tb_admin`
 ALTER TABLE `tb_aset`
   MODIFY `id_aset` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=379;
 --
+-- AUTO_INCREMENT for table `tb_biaya`
+--
+ALTER TABLE `tb_biaya`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT for table `tb_fakultas`
 --
 ALTER TABLE `tb_fakultas`
@@ -830,7 +874,7 @@ ALTER TABLE `tb_riwayat_transaksi`
 -- AUTO_INCREMENT for table `tb_siswa`
 --
 ALTER TABLE `tb_siswa`
-  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_siswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
